@@ -29,6 +29,9 @@ Usuario.sync({force: true}).then(() => {
 class UsuarioModel {
     static async authenticate(login, senha) {
         const usuario = await Usuario.findAll({where: {email: login, password: senha}});
+        if (usuario.length == 0) {
+            return null;
+        }
         const dados = {email: usuario[0].email, password: usuario[0].password};
         return dados;
     }
