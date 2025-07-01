@@ -58,14 +58,17 @@ Aplicar os conhecimentos aprendidos ao longo do curso, criando um backend basead
    ```
    insomnia.yaml
    ```
-5. Utilizar a rota LOGIN e obter o token:
+5. Utilizar a rota LOGIN e obter o token enviando o login padrão como JSON:
    ```
    http://localhost:3000/login
+   email: admin@teste.com
+   password: ds123456
    ```
 6. Usar o token como campo nos Headers em cada requisição que for testada da seguinte forma:
    ```
    token: TOKEN-OBTIDO-NO-LOGIN
    ```
+**OBSERVAÇÕES:** A base de dados não é persistente pois roda apenas na memória (recurso do SQLite), reiniciar a emulação sempre irá re-criar a base de dados com os valores padrões (encontrados no código). Qualquer usuário criado pode acessar o API, pois a autenticação é básica. Todos os CRUDs funcionam, porém não há detecção de erros robusta. As formas de usar cada rota estão incluidas no arquivo "insomnia.yaml" e aparecem automaticamente quando o arquivo é importado no programa, servindo como documentação do API.
 
 ...
 
