@@ -75,4 +75,4 @@ Aplicar os conhecimentos aprendidos ao longo do curso, criando um backend basead
 # Autores
 
 **Janilson Ferreira Costa**<br />
-**jainara pereira de sousa**
+**Jainara Pereira de Sousa**
