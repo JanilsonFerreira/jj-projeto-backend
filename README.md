@@ -54,7 +54,7 @@ Aplicar os conhecimentos aprendidos ao longo do curso, criando um backend basead
    npm run dev
    ```
    
-4. Importar o seguinte arquivo no Insomnia:
+4. Importar o seguinte arquivo no [Insomnia](https://insomnia.rest/):
    ```
    insomnia.yaml
    ```
