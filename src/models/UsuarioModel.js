@@ -2,15 +2,15 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 const Usuario = sequelize.define('usuarios', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    firstname: DataTypes.STRING,
-    surname: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        firstname: DataTypes.STRING,
+        surname: DataTypes.STRING,
+        email: DataTypes.STRING,
+        password: DataTypes.STRING
     },
     {
         timestamps: true
@@ -34,13 +34,16 @@ class UsuarioModel {
     }
 
     static async listar() {
-        const dados = await Usuario.findAll({attributes: ['firstname', 'surname', 'email', 'createdAt', 'updatedAt']});
+        const dados = await Usuario.findAll({attributes: ['id', 'firstname', 'surname', 'email', 'createdAt', 'updatedAt']});
         return dados;
     }
 
     static async consultarPorId(id) {
         const usuario = await Usuario.findAll({where: {id: id}});
-        const dados = {firstname: usuario[0].firstname, surname: usuario[0].surname, email: usuario[0].email, 
+        if (usuario.length == 0) {
+            return [];
+        }
+        const dados = {id: usuario[0].id, firstname: usuario[0].firstname, surname: usuario[0].surname, email: usuario[0].email, 
             createdAt: usuario[0].createdAt, updatedAt: usuario[0].updatedAt
         };
         return dados;

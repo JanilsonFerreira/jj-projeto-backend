@@ -2,17 +2,17 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 const Categoria = sequelize.define('categorias', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: DataTypes.STRING,
-    slug: DataTypes.STRING,
-    use_in_menu: {
-        type: DataTypes.BOOLEAN, 
-        defaultValue: false
-    }
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: DataTypes.STRING,
+        slug: DataTypes.STRING,
+        use_in_menu: {
+            type: DataTypes.BOOLEAN, 
+            defaultValue: false
+        }
     },
     {
         timestamps: true
@@ -55,10 +55,7 @@ class CategoriaModel {
     }
 
     static async consultarPorId(id) {
-        const categoria = await Categoria.findAll({where: {id: id}});
-        const dados = {name: categoria[0].name, slug: categoria[0].slug, use_in_menu: categoria[0].use_in_menu, 
-            createdAt: categoria[0].createdAt, updatedAt: categoria[0].updatedAt
-        };
+        const dados = await Categoria.findAll({where: {id: id}});
         return dados;
     }
 
